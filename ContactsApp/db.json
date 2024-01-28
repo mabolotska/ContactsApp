@@ -2,7 +2,8 @@
     "contacts": [
       {
         "id": 1,
-        "name": "Elma Herring",
+        "name": "Elma",
+        "surname": "Herring",
         "email": "elmaherring@unq.com",
         "messenger": {
             "telegram": true,
@@ -16,7 +17,8 @@
       },
       {
         "id": 2,
-        "name": "Knapp Berry",
+        "name": "Knapp",
+        "surname": "Berry",
         "email": "knappberry@unq.com",
         "messenger": {
             "telegram": null,
@@ -30,7 +32,8 @@
       },
       {
         "id": 3,
-        "name": "Bell Burgess",
+        "name": "Bell",
+        "surname": "Burgess",
         "email": "bellburgess@unq.com",
         "messenger": {
             "telegram": false,
@@ -44,7 +47,8 @@
       },
       {
         "id": 4,
-        "name": "Hobbs Ferrell",
+        "name": "Hobbs",
+        "surname": "Ferrell",
         "email": "hobbsferrell@unq.com",
         "messenger": {
             "telegram": true,
@@ -58,13 +62,15 @@
       },
       {
         "id": 5,
-        "name": "Marylou Medina",
+        "name": "Marylou",
+        "surname": " Medina",
         "email": "maryloumedina@unq.com",
         "phone": "+1 (996) 520-2967"
       },
       {
         "id": 6,
-        "name": "Larson Guerra",
+        "name": "Larson",
+        "surname": " Guerra",
         "email": "larsonguerra@unq.com",
         "messenger": {
             "telegram": true,
@@ -78,7 +84,8 @@
       },
       {
         "id": 7,
-        "name": "Shelby Ballard",
+        "name": "Shelby",
+        "surname": " Ballard",
         "email": "shelbyballard@unq.com",
         "messenger": {
             "telegram": true,
@@ -92,7 +99,8 @@
       },
       {
         "id": 8,
-        "name": "Lea Faulkner",
+        "name": "Lea ",
+        "surname": "Faulkner",
         "email": "leafaulkner@unq.com",
         "messenger": {
             "telegram": true,
@@ -106,7 +114,8 @@
       },
       {
         "id": 9,
-        "name": "Cecelia Wolf",
+        "name": "Cecelia" ,
+        "surname": "Wolf",
         "email": "ceceliawolf@unq.com",
         "messenger": {
             "telegram": true,
@@ -120,7 +129,8 @@
       },
       {
         "id": 10,
-        "name": "Melva Nixon",
+        "name": "Melva",
+        "surname": " Nixon",
         "email": "melvanixon@unq.com",
         "messenger": {
             "telegram": true,
@@ -134,7 +144,8 @@
       },
       {
         "id": 11,
-        "name": "Bernard Chambers",
+        "name": "Bernard",
+        "surname": " Chambers",
         "email": "bernardchambers@unq.com",
         "messenger": {
             "telegram": true,
@@ -148,7 +159,8 @@
       },
       {
         "id": 12,
-        "name": "Wendi Bender",
+        "name": "Wendi ",
+        "surname": "Bender",
         "email": "wendibender@unq.com",
         "messenger": {
             "telegram": true,
@@ -162,7 +174,8 @@
       },
       {
         "id": 13,
-        "name": "Wall Stewart",
+        "name": "Wall ",
+        "surname": "Stewart",
         "email": "wallstewart@unq.com",
         "messenger": {
             "telegram": true,
@@ -176,7 +189,8 @@
       },
       {
         "id": 14,
-        "name": "Howell Gilbert",
+        "name": "Howell ",
+        "surname": "Gilbert",
         "email": "howellgilbert@unq.com",
         "messenger": {
             "telegram": true,
@@ -190,7 +204,8 @@
       },
       {
         "id": 15,
-        "name": "Nguyen Maxwell",
+        "name": "Nguyen ",
+        "surname": "Maxwell",
         "email": "nguyenmaxwell@unq.com",
         "messenger": {
             "telegram": true,
@@ -204,7 +219,8 @@
       },
       {
         "id": 16,
-        "name": "Norris Hendricks",
+        "name": "Norris ",
+        "surname": "Hendricks",
         "email": "norrishendricks@unq.com",
         "messenger": {
             "telegram": false,
@@ -218,7 +234,8 @@
       },
       {
         "id": 17,
-        "name": "Salinas Mcleod",
+        "name": "Salinas ",
+        "surname": "Mcleod",
         "email": "salinasmcleod@unq.com",
         "messenger": {
             "telegram": false,
@@ -232,7 +249,8 @@
       },
       {
         "id": 18,
-        "name": "Michelle Barrett",
+        "name": "Michelle ",
+        "surname": "Barrett",
         "email": "michellebarrett@unq.com",
         "messenger": {
             "telegram": false,
@@ -246,7 +264,8 @@
       },
       {
         "id": 19,
-        "name": "Burke Barlow",
+        "name": "Burke ",
+        "surname": "Barlow",
         "email": "burkebarlow@unq.com",
         "messenger": {
             "telegram": false,
@@ -260,7 +279,8 @@
       },
       {
         "id": 20,
-        "name": "Rosie Cummings",
+        "name": "Rosie ",
+        "surname": "Cummings",
         "email": "rosiecummings@unq.com",
         "messenger": {
             "telegram": false,
@@ -274,7 +294,8 @@
       },
       {
         "id": 21,
-        "name": "Sanford Frye",
+        "name": "Sanford ",
+        "surname": "Frye",
         "email": "sanfordfrye@unq.com",
         "messenger": {
             "telegram": false,
@@ -288,7 +309,8 @@
       },
       {
         "id": 22,
-        "name": "Janna Peck",
+        "name": "Janna ",
+        "surname": "Peck",
         "email": "jannapeck@unq.com",
         "messenger": {
             "telegram": false,
@@ -302,7 +324,8 @@
       },
       {
         "id": 23,
-        "name": "Lorraine Sykes",
+        "name": "Lorraine ",
+        "surname": "Sykes",
         "email": "lorrainesykes@unq.com",
         "messenger": {
             "telegram": false,
@@ -316,7 +339,8 @@
       },
       {
         "id": 24,
-        "name": "Vicki Fulton",
+        "name": "Vicki ",
+        "surname": "Fulton",
         "email": "vickifulton@unq.com",
         "messenger": {
             "telegram": false,
@@ -330,7 +354,8 @@
       },
       {
         "id": 25,
-        "name": "Massey Moody",
+        "name": "Massey ",
+        "surname": "Moody",
         "email": "masseymoody@unq.com",
         "messenger": {
             "telegram": false,
@@ -344,7 +369,8 @@
       },
       {
         "id": 26,
-        "name": "Grant Berg",
+        "name": "Grant ",
+        "surname": "Berg",
         "email": "grantberg@unq.com",
         "messenger": {
             "telegram": false,
@@ -358,7 +384,8 @@
       },
       {
         "id": 27,
-        "name": "Hawkins Winters",
+        "name": "Hawkins ",
+        "surname": "Winters",
         "email": "hawkinswinters@unq.com",
         "messenger": {
             "telegram": false,
@@ -372,7 +399,8 @@
       },
       {
         "id": 28,
-        "name": "Frazier Davidson",
+        "name": "Frazier ",
+        "surname": "Davidson",
         "email": "frazierdavidson@unq.com",
         "messenger": {
             "telegram": false,
@@ -386,7 +414,8 @@
       },
       {
         "id": 29,
-        "name": "Francine Cervantes",
+        "name": "Francine ",
+        "surname": "Cervantes",
         "email": "francinecervantes@unq.com",
         "messenger": {
             "telegram": false,
@@ -400,7 +429,8 @@
       },
       {
         "id": 30,
-        "name": "Francis Perez",
+        "name": "Francis ",
+        "surname": "Perez",
         "email": "francisperez@unq.com",
         "messenger": {
             "telegram": false,

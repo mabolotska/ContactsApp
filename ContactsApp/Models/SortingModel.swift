@@ -8,8 +8,13 @@
 import Foundation
 import UIKit
 
-struct SortingModel: {
+struct SortingModel {
 var logoImage: UIImage?
-var titleLabel: UILabel?
+var titleLabel: String
+    
+    init(logoImage: UIImage?, titleLabel: String) {
+           self.logoImage = logoImage
+           self.titleLabel = titleLabel
+       }
     
 }

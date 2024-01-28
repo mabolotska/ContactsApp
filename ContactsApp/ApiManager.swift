@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+
+public class ApiManager {
+    let firstVc = ContactsViewController()
+    
+    static public var shared = ApiManager()
+    
+    
+ 
+}

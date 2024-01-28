@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D07FCE8A2B5FAF08006EE6ED /* UiViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07FCE892B5FAF08006EE6ED /* UiViewController + Extension.swift */; };
+		D07FCE8C2B5FB0C3006EE6ED /* db.json in Resources */ = {isa = PBXBuildFile; fileRef = D07FCE8B2B5FB0C3006EE6ED /* db.json */; };
+		D07FCE8E2B5FB8F6006EE6ED /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07FCE8D2B5FB8F6006EE6ED /* ApiManager.swift */; };
+		D07FCE902B5FDEBB006EE6ED /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07FCE8F2B5FDEBB006EE6ED /* TestVC.swift */; };
+		D07FCE922B5FEE56006EE6ED /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07FCE912B5FEE56006EE6ED /* LoginVC.swift */; };
+		D07FCE942B613134006EE6ED /* FilteringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07FCE932B613134006EE6ED /* FilteringViewController.swift */; };
+		D07FCE982B61C032006EE6ED /* CheckboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07FCE972B61C032006EE6ED /* CheckboxTableViewCell.swift */; };
+		D07FCE9A2B6470FE006EE6ED /* CustomBarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07FCE992B6470FE006EE6ED /* CustomBarButtonView.swift */; };
+		D07FCE9C2B6515F4006EE6ED /* SortingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07FCE9B2B6515F3006EE6ED /* SortingVC.swift */; };
+		D07FCE9E2B651B3B006EE6ED /* SortingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07FCE9D2B651B3B006EE6ED /* SortingCell.swift */; };
+		D07FCEA02B658EFF006EE6ED /* SortingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07FCE9F2B658EFF006EE6ED /* SortingModel.swift */; };
 		D0DD70A92B5DB4C400E035D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DD70A82B5DB4C400E035D6 /* AppDelegate.swift */; };
 		D0DD70AB2B5DB4C400E035D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DD70AA2B5DB4C400E035D6 /* SceneDelegate.swift */; };
 		D0DD70AD2B5DB4C400E035D6 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DD70AC2B5DB4C400E035D6 /* ContactsViewController.swift */; };
@@ -22,6 +33,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D07FCE892B5FAF08006EE6ED /* UiViewController + Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UiViewController + Extension.swift"; sourceTree = "<group>"; };
+		D07FCE8B2B5FB0C3006EE6ED /* db.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = db.json; sourceTree = "<group>"; };
+		D07FCE8D2B5FB8F6006EE6ED /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		D07FCE8F2B5FDEBB006EE6ED /* TestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
+		D07FCE912B5FEE56006EE6ED /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		D07FCE932B613134006EE6ED /* FilteringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteringViewController.swift; sourceTree = "<group>"; };
+		D07FCE972B61C032006EE6ED /* CheckboxTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxTableViewCell.swift; sourceTree = "<group>"; };
+		D07FCE992B6470FE006EE6ED /* CustomBarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBarButtonView.swift; sourceTree = "<group>"; };
+		D07FCE9B2B6515F3006EE6ED /* SortingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingVC.swift; sourceTree = "<group>"; };
+		D07FCE9D2B651B3B006EE6ED /* SortingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingCell.swift; sourceTree = "<group>"; };
+		D07FCE9F2B658EFF006EE6ED /* SortingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingModel.swift; sourceTree = "<group>"; };
 		D0DD70A52B5DB4C400E035D6 /* ContactsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0DD70A82B5DB4C400E035D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0DD70AA2B5DB4C400E035D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +71,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D07FCE952B61BFB7006EE6ED /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D07FCE912B5FEE56006EE6ED /* LoginVC.swift */,
+				D07FCE932B613134006EE6ED /* FilteringViewController.swift */,
+				D0DD70AC2B5DB4C400E035D6 /* ContactsViewController.swift */,
+				D07FCE9B2B6515F3006EE6ED /* SortingVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D07FCE962B61C006006EE6ED /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D0DD70C62B5DBF0700E035D6 /* ContactCell.swift */,
+				D07FCE972B61C032006EE6ED /* CheckboxTableViewCell.swift */,
+				D07FCE992B6470FE006EE6ED /* CustomBarButtonView.swift */,
+				D07FCE9D2B651B3B006EE6ED /* SortingCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D07FCEA12B65A2E0006EE6ED /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D0DD70C42B5DBE1000E035D6 /* Contact.swift */,
+				D07FCE9F2B658EFF006EE6ED /* SortingModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		D0DD709C2B5DB4C400E035D6 = {
 			isa = PBXGroup;
 			children = (
@@ -68,17 +121,21 @@
 		D0DD70A72B5DB4C400E035D6 /* ContactsApp */ = {
 			isa = PBXGroup;
 			children = (
+				D07FCE962B61C006006EE6ED /* Views */,
+				D07FCE952B61BFB7006EE6ED /* Controllers */,
+				D07FCEA12B65A2E0006EE6ED /* Models */,
 				D0DD70A82B5DB4C400E035D6 /* AppDelegate.swift */,
 				D0DD70AA2B5DB4C400E035D6 /* SceneDelegate.swift */,
-				D0DD70AC2B5DB4C400E035D6 /* ContactsViewController.swift */,
 				D0DD70C82B5DC09800E035D6 /* ContactService.swift */,
-				D0DD70C62B5DBF0700E035D6 /* ContactCell.swift */,
-				D0DD70C42B5DBE1000E035D6 /* Contact.swift */,
-				D0DD70AE2B5DB4C400E035D6 /* Main.storyboard */,
 				D0DD70B42B5DB4C700E035D6 /* Assets.xcassets */,
+				D0DD70AE2B5DB4C400E035D6 /* Main.storyboard */,
 				D0DD70B62B5DB4C700E035D6 /* LaunchScreen.storyboard */,
 				D0DD70B92B5DB4C700E035D6 /* Info.plist */,
 				D0DD70B12B5DB4C400E035D6 /* ContactsApp.xcdatamodeld */,
+				D07FCE892B5FAF08006EE6ED /* UiViewController + Extension.swift */,
+				D07FCE8B2B5FB0C3006EE6ED /* db.json */,
+				D07FCE8D2B5FB8F6006EE6ED /* ApiManager.swift */,
+				D07FCE8F2B5FDEBB006EE6ED /* TestVC.swift */,
 			);
 			path = ContactsApp;
 			sourceTree = "<group>";
@@ -149,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0DD70B82B5DB4C700E035D6 /* LaunchScreen.storyboard in Resources */,
+				D07FCE8C2B5FB0C3006EE6ED /* db.json in Resources */,
 				D0DD70B52B5DB4C700E035D6 /* Assets.xcassets in Resources */,
 				D0DD70B02B5DB4C400E035D6 /* Main.storyboard in Resources */,
 			);
@@ -161,13 +219,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D07FCE922B5FEE56006EE6ED /* LoginVC.swift in Sources */,
+				D07FCE902B5FDEBB006EE6ED /* TestVC.swift in Sources */,
+				D07FCE9E2B651B3B006EE6ED /* SortingCell.swift in Sources */,
 				D0DD70C72B5DBF0700E035D6 /* ContactCell.swift in Sources */,
+				D07FCE8E2B5FB8F6006EE6ED /* ApiManager.swift in Sources */,
 				D0DD70B32B5DB4C400E035D6 /* ContactsApp.xcdatamodeld in Sources */,
+				D07FCE9C2B6515F4006EE6ED /* SortingVC.swift in Sources */,
+				D07FCE8A2B5FAF08006EE6ED /* UiViewController + Extension.swift in Sources */,
 				D0DD70AD2B5DB4C400E035D6 /* ContactsViewController.swift in Sources */,
+				D07FCEA02B658EFF006EE6ED /* SortingModel.swift in Sources */,
+				D07FCE9A2B6470FE006EE6ED /* CustomBarButtonView.swift in Sources */,
 				D0DD70C92B5DC09900E035D6 /* ContactService.swift in Sources */,
 				D0DD70C52B5DBE1000E035D6 /* Contact.swift in Sources */,
 				D0DD70A92B5DB4C400E035D6 /* AppDelegate.swift in Sources */,
+				D07FCE982B61C032006EE6ED /* CheckboxTableViewCell.swift in Sources */,
 				D0DD70AB2B5DB4C400E035D6 /* SceneDelegate.swift in Sources */,
+				D07FCE942B613134006EE6ED /* FilteringViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

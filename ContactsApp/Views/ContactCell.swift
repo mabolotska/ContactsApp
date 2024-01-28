@@ -11,8 +11,8 @@ import SnapKit
 class ContactCell: UITableViewCell {
 
     func configure(with model: Contact) {
-  //      userIdLabel.text =  "\(model.userID ?? 0)"
         nameLabel.text = "\(model.name ?? "No name")"
+        surnameLabel.text = "\(model.surname ?? "No surname")"
         phoneLabel.text = "\(model.phone ?? "No phone")"
         emailLabel.text = model.email
         telegramLogo.isHidden = !(model.messenger?.telegram ?? true)
@@ -45,6 +45,15 @@ class ContactCell: UITableViewCell {
        label.font = UIFont(name: "Chalkduster", size: 25)
         return label
     }()
+    
+    var surnameLabel: UILabel = {
+        let label = UILabel()
+         label.numberOfLines = 0
+        label.font = UIFont(name: "Chalkduster", size: 25)
+         return label
+     }()
+    
+    
     private var phoneLabel: UILabel = {
        let label = UILabel()
         label.numberOfLines = 0
@@ -94,7 +103,7 @@ class ContactCell: UITableViewCell {
     private let stackView: UIStackView = {
          let stackView = UIStackView()
         stackView.axis = .vertical
-         stackView.spacing = 2
+         stackView.spacing = 5
         
          return stackView
      }()
@@ -112,7 +121,7 @@ private extension ContactCell {
     
     func initialize() {
         contentView.addSubview(stackView)
-    //    stackView.addArrangedSubview(userIdLabel)
+        stackView.addArrangedSubview(surnameLabel)
         stackView.addArrangedSubview(nameLabel)
         stackView.addArrangedSubview(phoneLabel)
         stackView.addArrangedSubview(emailLabel)
