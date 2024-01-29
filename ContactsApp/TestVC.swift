@@ -6,122 +6,148 @@
 //
 
 import UIKit
-
-import UIKit
 import SnapKit
 
-class CustomTableViewCell: UITableViewCell {
-    let titleLabel = UILabel()
-    let checkmarkButton = UIButton()
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.selectionStyle = .none
-        setupUI()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    private func setupUI() {
-        // Add subviews to the cell's content view
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(checkmarkButton)
-
-        // Configure constraints using SnapKit
-        titleLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().offset(16)
-        }
-
-        checkmarkButton.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().offset(-16)
-            make.width.height.equalTo(30) // You can adjust the size
-        }
-
-        // Configure checkmark button appearance
-        checkmarkButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
-        checkmarkButton.setImage(UIImage(systemName: "checkmark.square.fill"), for: .selected)
-
-        // Add target for button tap
-        checkmarkButton.addTarget(self, action: #selector(checkmarkButtonTapped), for: .touchUpInside)
-    }
-
-    @objc private func checkmarkButtonTapped() {
-        // Handle checkmark button tap
-        // You can toggle the selection state, update UI, etc.
-        checkmarkButton.isSelected.toggle()
+class Person {
+    var name: String
+    var contactMethod: String
+    
+    init(name: String, contactMethod: String) {
+        self.name = name
+        self.contactMethod = contactMethod
     }
 }
 
+class CustomCell: UITableViewCell {
+    let nameLabel = UILabel()
+       let contactMethodLabel = UILabel()
 
-class TableViewController: UITableViewController {
-    var data = ["Item 1", "Item 2", "Item 3", "Item 4"]
-    var selectedRows = Set<Int>()
+       override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+           super.init(style: style, reuseIdentifier: reuseIdentifier)
+
+           setupUI()
+       }
+
+       required init?(coder: NSCoder) {
+           fatalError("init(coder:) has not been implemented")
+       }
+
+       func setupUI() {
+           addSubview(nameLabel)
+           addSubview(contactMethodLabel)
+
+           nameLabel.snp.makeConstraints { make in
+               make.top.equalToSuperview().offset(8)
+               make.leading.equalToSuperview().offset(16)
+               make.trailing.equalToSuperview().offset(-16)
+           }
+
+           contactMethodLabel.snp.makeConstraints { make in
+               make.top.equalTo(nameLabel.snp.bottom).offset(4)
+               make.leading.equalToSuperview().offset(16)
+               make.trailing.equalToSuperview().offset(-16)
+               make.bottom.equalToSuperview().offset(-8)
+           }
+
+           nameLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+           contactMethodLabel.font = UIFont.systemFont(ofSize: 14)
+       }
+
+       func configure(with person: Person) {
+           nameLabel.text = person.name
+           contactMethodLabel.text = "Contact: \(person.contactMethod)"
+       }
+}
+import UIKit
+import SnapKit
+
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+    var people: [Person] = [
+        Person(name: "John", contactMethod: "Email"),
+        Person(name: "Jane", contactMethod: "Telegram"),
+        Person(name: "Bob", contactMethod: "Telegram"),
+        // Add more people as needed
+    ]
+    
+    var showFilteredPeopleCount: Bool = false {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+
+    var filteredPeople: [Person] {
+        if showFilteredPeopleCount {
+            return people.filter { $0.contactMethod == "Telegram" }
+        } else {
+            return people
+        }
+    }
+
+    let tableView = UITableView()
+    let sortButton = UIButton()
+    let countLabel = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "CustomCell")
-        tableView.allowsMultipleSelection = true
-
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "Select/Deselect All",
-            style: .plain,
-            target: self,
-            action: #selector(selectDeselectAll)
-        )
+        setupUI()
     }
 
-    @objc private func selectDeselectAll() {
+    func setupUI() {
+        view.addSubview(tableView)
+        view.addSubview(sortButton)
+        view.addSubview(countLabel)
+
+        tableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+
+        sortButton.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-16)
+        }
+
+        countLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(sortButton.snp.bottom).offset(8)
+        }
+
+        sortButton.setTitle("Sort", for: .normal)
+        sortButton.setTitleColor(.blue, for: .normal)
+        sortButton.addTarget(self, action: #selector(sortButtonTapped), for: .touchUpInside)
+
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(CustomCell.self, forCellReuseIdentifier: "CustomCell")
         
-        let shouldSelectAll = selectedRows.count < data.count
+        // Initially, show all people
+        tableView.reloadData()
+    }
 
-        for row in 0..<data.count {
-            let indexPath = IndexPath(row: row, section: 0)
+    @objc func sortButtonTapped() {
+        showFilteredPeopleCount.toggle()
+        updateCountLabel()
+    }
 
-            if shouldSelectAll {
-                
-                          
-                tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
-                selectedRows.insert(row)
-            } else {
-                
-                
-                
-                tableView.deselectRow(at: indexPath, animated: true)
-                selectedRows.remove(row)
-            }
-
-           
-            
-            if let cell = tableView.cellForRow(at: indexPath) as? CustomTableViewCell {
-                cell.checkmarkButton.isSelected = shouldSelectAll
-            }
+    func updateCountLabel() {
+        if showFilteredPeopleCount {
+            countLabel.text = "Filtered People Count: \(filteredPeople.count)"
+        } else {
+            countLabel.text = ""
         }
     }
 
-    // MARK: - Table view data source
+    // MARK: - UITableViewDataSource
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filteredPeople.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! CustomTableViewCell
-        cell.titleLabel.text = data[indexPath.row]
-        cell.checkmarkButton.isSelected = selectedRows.contains(indexPath.row)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! CustomCell
+        let person = filteredPeople[indexPath.row]
+        cell.configure(with: person)
         return cell
-    }
-
-    // Handle the selection/deselection of cells
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedRows.insert(indexPath.row)
-    }
-
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        selectedRows.remove(indexPath.row)
     }
 }

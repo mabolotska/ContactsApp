@@ -18,15 +18,21 @@ enum SortingProperty {
     case surname
 }
 
+enum MessengerType {
+    case telegram
+    case viber
+    case whatsapp
+    case signal
+}
 
 
-class ContactsViewController: UIViewController, FilteringViewDelegate {
-    func didApplyFilters() {
-           overlayImageView.isHidden = false
-       }
+
+class ContactsViewController: UIViewController, FilteringViewDelegate, SortingViewDelegate {
+  
+    
+    var filteredMessengerType: MessengerType?
 
     var allContacts: [Contact] = []
-    var filteredContacts: [Contact] = []
     var sortedContacts: [Contact] = []
     private var cellId = "ContactCellID"
     var cnContacts = [CNContact]()
@@ -35,6 +41,36 @@ class ContactsViewController: UIViewController, FilteringViewDelegate {
     
     private let service: ContactService = ContactServiceImpl()
     
+    var showFilteredPeopleCount: Bool = false {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+
+    
+    var filteredPeople: [Contact] {
+            if showFilteredPeopleCount, let messengerType = filteredMessengerType {
+                return allContacts.filter {
+                    switch messengerType {
+                    case .telegram:
+                        return $0.messenger?.telegram == true
+                    case .viber:
+                        return $0.messenger?.viber == true
+                    case .whatsapp:
+                        return $0.messenger?.whatsapp == true
+                    case .signal:
+                        return $0.messenger?.signal == true
+                    }
+                }
+            } else {
+                return allContacts
+            }
+        }
+    func filterPeopleByMessengerType(_ messengerType: MessengerType?) {
+         filteredMessengerType = messengerType
+         tableView.reloadData()
+     }
  
     
     private lazy var tableView: UITableView = {
@@ -76,8 +112,7 @@ class ContactsViewController: UIViewController, FilteringViewDelegate {
         }
         
        navigationItem.rightBarButtonItems = makeRightBarButtonItems()
-      
-   //     navigationItem.rightBarButtonItem = customBarButtonItem
+  
         
         
       sortedContacts = allContacts.sorted {
@@ -100,6 +135,8 @@ class ContactsViewController: UIViewController, FilteringViewDelegate {
     
     
     @objc func didTapFilter() {
+      
+
 
         let modalViewController = FilteringViewController()
             modalViewController.contactsViewController = self
@@ -109,10 +146,12 @@ class ContactsViewController: UIViewController, FilteringViewDelegate {
             present(modalViewController, animated: true, completion: nil)
     }
     
+
+    
     @objc func didTapSorting() {
         let modalViewController = SortingVC()
             modalViewController.contactsViewController = self
-            
+        modalViewController.delegate = self
             modalViewController.modalPresentationStyle = .formSheet
             modalViewController.modalTransitionStyle = .crossDissolve
             present(modalViewController, animated: true, completion: nil)
@@ -155,21 +194,33 @@ class ContactsViewController: UIViewController, FilteringViewDelegate {
     
         tableView.reloadData()
     }
+    
+    
+    func didApplySorting() {
+        tableView.reloadData()
+           dismiss(animated: true)
+    
+       }
+
+    func didApplyFilters() {
+           overlayImageView.isHidden = false
+       }
+
 }
 
 extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
-        allContacts.count
+   //     allContacts.count
+        filteredPeople.count
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ContactCell
-        let contact = allContacts[indexPath.row]
-   
-        cell.configure(with: contact)
+        let person = filteredPeople[indexPath.row]
+        cell.configure(with: person)
         return cell
         
     }
@@ -177,6 +228,16 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
       return 172.0
     }
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+           if editingStyle == .delete {
+               // Update your data source
+               allContacts.remove(at: indexPath.row)
+
+               // Update the table view to reflect the changes
+               tableView.deleteRows(at: [indexPath], with: .fade)
+           }
+       }
+   
     
 }
 
@@ -238,5 +299,32 @@ extension ContactsViewController {
             
         }
         
+    }
+}
+
+
+extension ContactsViewController {
+    func sortTelegram() {
+        showFilteredPeopleCount.toggle()
+               filteredMessengerType = showFilteredPeopleCount ? .telegram : nil
+               tableView.reloadData()
+    }
+    
+    func sortViber() {
+        showFilteredPeopleCount.toggle()
+        filteredMessengerType = showFilteredPeopleCount ? .viber : nil
+               tableView.reloadData()
+    }
+    
+    func sortWhatsapp() {
+        showFilteredPeopleCount.toggle()
+        filteredMessengerType = showFilteredPeopleCount ? .whatsapp : nil
+               tableView.reloadData()
+    }
+    
+    func sortSignal() {
+        showFilteredPeopleCount.toggle()
+        filteredMessengerType = showFilteredPeopleCount ? .signal : nil
+               tableView.reloadData()
     }
 }

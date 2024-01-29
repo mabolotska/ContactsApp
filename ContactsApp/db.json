@@ -6,7 +6,7 @@
         "surname": "Herring",
         "email": "elmaherring@unq.com",
         "messenger": {
-            "telegram": true,
+            "telegram": false,
             "whatsapp": true,
             "viber": false,
             "signal": true,
@@ -53,7 +53,7 @@
         "messenger": {
             "telegram": true,
             "whatsapp": true,
-            "viber": true,
+            "viber": false,
             "signal": true,
             "threema": false,
             "email": true

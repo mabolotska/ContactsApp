@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol SortingViewDelegate: AnyObject {
+    func didApplySorting()
+ 
+}
+
 class SortingVC: UIViewController {
+    weak var delegate: SortingViewDelegate?
     weak var contactsViewController: ContactsViewController?
     var selectedIndexPath: IndexPath?
     
@@ -33,46 +39,11 @@ class SortingVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    
         inizialize()
     }
 
     
-//    @objc func btnCheckUncheckClick(_sender: UIButton){
-//        
-//        _sender.isSelected = !_sender.isSelected
-//        let firstIndex = IndexPath(row: 0, section: 0)
-//        
-//        let selectedIndex = IndexPath(row: _sender.tag, section: 0)
-//        
-//        if selectedIndexPath == firstIndex {
-//            _sender.backgroundColor = .red
-//            
-//        }
-//        
-//
-//        if let previousSelectedIndex = selectedIndexPath {
-//            // Deselect the previous cell
-//            let cell = tableView.cellForRow(at: previousSelectedIndex) as? CheckboxTableViewCell
-//            cell?.checkboxButton.isSelected = false
-//        }
-//        
-//        
-//        if selectedIndexPath == selectedIndex {
-//            
-//            selectedIndexPath = nil
-//        } 
-//        
-//    
-//        else {
-//           
-//            selectedIndexPath = selectedIndex
-//          
-//        }
-//
-//        tableView.reloadData()
-//     
-//    }
     
     
   
@@ -105,29 +76,18 @@ class SortingVC: UIViewController {
     
     
     @objc func submitTap() {
+        delegate?.didApplySorting()
+ //       delegate?.didResetFilters()
         
-        guard let selectedIndexPath = tableView.indexPathForSelectedRow else {
-            print("No row selected")
-            // Handle the case when no row is selected (e.g., show an alert)
-            return
-        }
+//        guard let selectedIndexPath = tableView.indexPathForSelectedRow else {
+//            print("No row selected")
+//            // Handle the case when no row is selected (e.g., show an alert)
+//            return
+//        }
         
-  //      guard let selectedIndexPath = selectedIndexPath else { return }
+      guard let selectedIndexPath = selectedIndexPath else { return }
         
-        switch selectedIndexPath.row {
-        case 0:
-            self.dismiss(animated: true, completion: nil)
-        case 1:
-            self.dismiss(animated: true, completion: nil)
-        case 2:
-            contactsViewController?.loadData(sortingType: .ascending, sortingProperty: .surname)
-        case 3:
-            contactsViewController?.loadData(sortingType: .descending, sortingProperty: .surname)
-        case 4:
-            contactsViewController?.loadData(sortingType: .descending, sortingProperty: .surname)
-        default:
-            break
-        }
+
         
    tableView.deselectRow(at: selectedIndexPath, animated: true)
         self.dismiss(animated: true, completion: nil)
@@ -155,11 +115,43 @@ extension SortingVC: UITableViewDelegate, UITableViewDataSource {
            cell.checkboxButton.isSelected = selectedRows.contains(indexPath.row)
            cell.checkboxButton.tag = indexPath.row
             
-            if indexPath.row == 0 {
+          
+            
+            switch indexPath.row {
+            case 0:
                 cell.checkboxButtonAction = { [weak self] in
                     self?.selectDeselectAll()
+                    if cell.checkboxButton.isEnabled == true {
+                        self?.contactsViewController?.filteredMessengerType = nil
+                    }
+                 tableView.reloadData()
+            
                 }
+            case 1:
+                cell.checkboxButtonAction = { [weak self] in
+                                   self?.contactsViewController?.sortViber()
+                                   tableView.reloadData()
+                               }
+            case 2:
+                cell.checkboxButtonAction = { [weak self] in
+                                   self?.contactsViewController?.sortSignal()
+                                   tableView.reloadData()
+                               }
+            case 3:
+                cell.checkboxButtonAction = { [weak self] in
+                                   self?.contactsViewController?.sortWhatsapp()
+                                   tableView.reloadData()
+                               }
+            case 4:
+                cell.checkboxButtonAction = { [weak self] in
+                                   self?.contactsViewController?.sortTelegram()
+                                   tableView.reloadData()
+                               }
+            default:
+                break
             }
+            
+            
           
 
              if let selectedIndexPath = selectedIndexPath, selectedIndexPath == indexPath {
@@ -173,14 +165,13 @@ extension SortingVC: UITableViewDelegate, UITableViewDataSource {
            return cell
        }
        
-//        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//           selectedIndexPath = indexPath
-//            if indexPath.row == 0 {
-//                self.dismiss(animated: true, completion: nil)
-//            }
-//            
-//          
-//       }
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+           selectedIndexPath = indexPath
+        
+          
+       }
+ 
+    
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
